@@ -77,8 +77,16 @@ func MakeNewHeartbeat(animalTypeId int64, animalNumber int64, redis *RedisCon) (
 	} else if animalTypeId > int64(len(Zoopark)) {
 		return int64(50), errors.New("animalTypeId limit")
 	}
+	/*
+		Хак. Обращаемся во внутренний контур для предыдущего значения
+		Это позволяет рисовать сглаженные графики
+	*/
 	var heartbeat = redis.Get(animalTypeId, animalNumber)
 	heartbeat += int64(rand.Int31n(3) - 1)
+	/*
+		Хомячки не умирают
+		Высокий пульс принудительно опускаем ниже/выше лимита
+	*/
 	if heartbeat < 1 {
 		heartbeat = 1
 	} else if heartbeat > 100 {
@@ -159,8 +167,7 @@ func Server() error {
 
 func NewWorker() *Worker {
 	ch := make(chan *gengrpc.HamsterbeatRequest, 1024)
-	var worker = &Worker{Channel: &ch, Redis: &RedisCon{}}
-	return worker
+	return &Worker{Channel: &ch, Redis: &RedisCon{}}
 }
 
 func StartServer(g GrpcListener) error {

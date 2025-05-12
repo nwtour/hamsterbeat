@@ -37,4 +37,3 @@ func TestMakeNewHearbeat(t *testing.T) {
 		t.Error("Пульс животного слишком велик")
 	}
 }
-

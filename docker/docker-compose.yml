@@ -35,6 +35,11 @@ services:
     networks:
       my:
         ipv4_address: 172.10.0.4
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
   grpc-receiver:
     image: ubuntu:24.04
     build:
@@ -47,6 +52,11 @@ services:
     networks:
       my:
         ipv4_address: 172.10.0.5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 networks:
   my:
     ipam:

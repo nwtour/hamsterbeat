@@ -93,7 +93,7 @@ func MakePrometeusMetric() (ret int) {
 			)
 		}
 	}
-	return ret
+	return
 }
 
 func ServeMetrics() {
