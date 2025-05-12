@@ -11,8 +11,8 @@ var Zoopark = map[int64][3]string{
 }
 
 const (
-	GRPC_ADDR          = "localhost:9999"
-	REDIS_ADDR         = "localhost:6379"
+	GRPC_ADDR          = "172.10.0.5:9999"
+	REDIS_ADDR         = "172.10.0.2:6379"
 	REDIS_KEY_TEMPLATE = "heartbeat%d_%d"
-	PROMETEUS_ADDR     = "localhost:9100"
+	PROMETEUS_ADDR     = "172.10.0.4:9100"
 )

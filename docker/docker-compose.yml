@@ -6,13 +6,51 @@ services:
       dockerfile: redis/Dockerfile
     container_name: redis
     ports:
-      - 6379:50000
+      - 6379:6379
     command: redis-server /etc/redis.conf
+    networks:
+      my:
+        ipv4_address: 172.10.0.2
   prometheus:
-    image: prom/prometheus
+    image: alpine:latest
     build:
       context: .
       dockerfile: prometheus/Dockerfile
     container_name: prometheus
+    command: /usr/bin/prometheus --config.file=/etc/prometheus.yml
     ports:
       - 9090:9090
+    networks:
+      my:
+        ipv4_address: 172.10.0.3
+  metrics:
+    image: ubuntu:24.04
+    build:
+      context: .
+      dockerfile: metrics/Dockerfile
+    container_name: metrics
+    command: /bin/metrics
+    ports:
+      - 9100:9100
+    networks:
+      my:
+        ipv4_address: 172.10.0.4
+  grpc-receiver:
+    image: ubuntu:24.04
+    build:
+      context: .
+      dockerfile: grpc-receiver/Dockerfile
+    container_name: grpc-receiver
+    command: /bin/grpc-receiver
+    ports:
+      - 9999:9999
+    networks:
+      my:
+        ipv4_address: 172.10.0.5
+networks:
+  my:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.10.0.0/24
+          gateway: 172.10.0.1

@@ -20,7 +20,8 @@ go build -C third_party/grpc-go/cmd/protoc-gen-go-grpc -v -o ../../../../build/p
 
 #go build -C third_party/nats-server -v -o ../../build/nats-server main.go || exit 1
 
-./third_party/mockery/mockery
+go build -C ./third_party/mockery -o ../../build/mockery main.go
+./build/mockery
 
 gofmt . >/dev/null || exit 1
 
@@ -37,7 +38,9 @@ go tool cover -html=/tmp/coverage.out -o coverage.html
 TOOLS="sender grpc-receiver metrics"
 for tool in $TOOLS; do
     echo "Build $tool"
-    go build -v -o "build/$tool" cmd/$tool/main.go || exit 1
+    go build -v -o "docker/$tool/$tool" cmd/$tool/main.go || exit 1
 done
+
+rm -fv ./build/mockery ./build/protoc-gen-go ./build/protoc-gen-go-grpc
 
 tree -I third_party

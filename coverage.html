@@ -513,9 +513,9 @@ func MakeNewHeartbeat(animalTypeId int64, animalNumber int64, redis *RedisCon) (
         }</span>
         <span class="cov8" title="1">var heartbeat = redis.Get(animalTypeId, animalNumber)
         heartbeat += int64(rand.Int31n(3) - 1)
-        if heartbeat &lt; 1 </span><span class="cov0" title="0">{
+        if heartbeat &lt; 1 </span><span class="cov8" title="1">{
                 heartbeat = 1
-        }</span> else<span class="cov8" title="1"> if heartbeat &gt; 100 </span><span class="cov0" title="0">{
+        }</span> else<span class="cov0" title="0"> if heartbeat &gt; 100 </span><span class="cov0" title="0">{
                 heartbeat = 100
         }</span>
         <span class="cov8" title="1">return heartbeat, nil</span>
