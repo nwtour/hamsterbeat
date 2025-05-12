@@ -32,8 +32,8 @@ protoc -I proto proto/*.proto --go_out=./gen/ --plugin=build/protoc-gen-go || ex
 
 protoc -I proto proto/*.proto --go-grpc_out=./gen/ --plugin=build/protoc-gen-go-grpc || exit 1
 
-go test -coverprofile=/tmp/coverage.out -count=2 ./... || exit 1
-go tool cover -html=/tmp/coverage.out -o coverage.html
+go test -coverprofile=/tmp/coverage.out -count=1 ./... || exit 1
+go tool cover -html=/tmp/coverage.out -o docs/coverage.html
 
 TOOLS="sender grpc-receiver metrics"
 for tool in $TOOLS; do

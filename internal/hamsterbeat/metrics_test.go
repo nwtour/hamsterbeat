@@ -11,13 +11,11 @@ func TestMyNewCollecor(t *testing.T) {
 	}
 }
 
-/*
 func TestMakePrometeusMetric(t *testing.T) {
 	if MakePrometeusMetric() < 1 {
 		t.Error("Не создались метрики в Prometeus")
 	}
 }
-*/
 
 func TestRedisSet(t *testing.T) {
 	r := &RedisCon{}

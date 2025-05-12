@@ -2,12 +2,7 @@ package hamsterbeat
 
 import (
 	"context"
-	//	"errors"
-	//	"fmt"
-	//"github.com/golang/mock/gomock"
 	gengrpc "hamsterbeat/gen/hamsterbeat.grpc"
-	//	"hamsterbeat/internal/hamsterbeat"
-	//"github.com/stretchr/testify/mock"
 	"testing"
 )
 
@@ -43,24 +38,3 @@ func TestMakeNewHearbeat(t *testing.T) {
 	}
 }
 
-/*
-type T2 struct {
-	mock.Mock
-}
-
-func (d *T2) GetRPCListner() {
-	return
-}
-*/
-
-/*
-func TestServer(t *testing.T) {
-	m := NewMockGrpcListener(t)
-	m.listner = nil
-	m.On("GetRPCListner").Return(nil)
-	err := StartServer(m)
-	if err == nil {
-		t.Error("При ошибке биндинга сервер не вернул ошибку")
-	}
-}
-*/

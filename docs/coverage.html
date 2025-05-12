@@ -67,7 +67,7 @@
 				
 				<option value="file5">hamsterbeat/internal/hamsterbeat/grpc.go (23.4%)</option>
 				
-				<option value="file6">hamsterbeat/internal/hamsterbeat/metrics.go (46.9%)</option>
+				<option value="file6">hamsterbeat/internal/hamsterbeat/metrics.go (75.0%)</option>
 				
 				</select>
 			</div>
@@ -631,7 +631,7 @@ type MyCollector struct {
         Redis        *RedisCon
 }
 
-func (c *MyCollector) Describe(ch chan&lt;- *prometheus.Desc) <span class="cov0" title="0">{
+func (c *MyCollector) Describe(ch chan&lt;- *prometheus.Desc) <span class="cov8" title="1">{
         ch &lt;- c.counterDesc
 }</span>
 
@@ -688,12 +688,12 @@ func (c *RedisCon) Connect() <span class="cov8" title="1">{
         }</span>
 }
 
-func MakePrometeusMetric() (ret int) <span class="cov0" title="0">{
-        for animalTypeId := range Zoopark </span><span class="cov0" title="0">{
+func MakePrometeusMetric() (ret int) <span class="cov8" title="1">{
+        for animalTypeId := range Zoopark </span><span class="cov8" title="1">{
                 typeLimit, _ := strconv.ParseInt(Zoopark[animalTypeId][1], 10, 64)
                 r := &amp;RedisCon{}
                 r.Connect()
-                for animalNumber := int64(1); animalNumber &lt;= typeLimit; animalNumber++ </span><span class="cov0" title="0">{
+                for animalNumber := int64(1); animalNumber &lt;= typeLimit; animalNumber++ </span><span class="cov8" title="1">{
                         ret++
                         prometheus.MustRegister(
                                 NewMyCollector(
@@ -705,7 +705,7 @@ func MakePrometeusMetric() (ret int) <span class="cov0" title="0">{
                         )
                 }</span>
         }
-        <span class="cov0" title="0">return ret</span>
+        <span class="cov8" title="1">return ret</span>
 }
 
 func ServeMetrics() <span class="cov0" title="0">{

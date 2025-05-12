@@ -1,4 +1,6 @@
-# Система обрабатывает 20k метрик в секунду по gRPC и отображает их через Prometheus
+# Hamsterbeat
+
+Система обрабатывает 20k метрик в секунду по gRPC и отображает их через Prometheus
 
 ## Использование
 ```
@@ -66,3 +68,7 @@ xbrowser http://localhost:9090
 │   └── hamsterbeat.proto
 └── README.md
 ```
+
+## Скриншот
+
+![screen](docs/screen.png)
