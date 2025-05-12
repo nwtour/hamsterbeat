@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package hamsterbeat.grpc;
+
+option go_package = "hamsterbeat.grpc";
+
+service Hamsterbeat {
+    rpc Pulse (HamsterbeatRequest) returns (HamsterbeatResponse);
+}
+
+message HamsterbeatRequest {
+    int64 animaltypeid = 1;
+    int64 animalid = 2;
+    int64 heartbeat = 3;
+}
+
+message HamsterbeatResponse {
+    bool result = 1;
+}
+
