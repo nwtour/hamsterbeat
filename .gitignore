@@ -1,3 +1,4 @@
 go.sum
 docker/grpc-receiver/grpc-receiver
 docker/metrics/metrics
+docker/sender/sender
