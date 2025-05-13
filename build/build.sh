@@ -35,6 +35,8 @@ protoc -I proto proto/*.proto --go-grpc_out=./gen/ --plugin=build/protoc-gen-go-
 go test -coverprofile=/tmp/coverage.out -count=1 ./... || exit 1
 go tool cover -html=/tmp/coverage.out -o docs/coverage.html
 
+mkdir -p docker/sender
+
 TOOLS="sender grpc-receiver metrics"
 for tool in $TOOLS; do
     echo "Build $tool"
